@@ -24,7 +24,7 @@ with open(ENCODER_PATH, "rb") as f:
     weather_encoder = pickle.load(f)
 
 # 📌 Initialisation de MLflow
-mlflow.set_tracking_uri("http://13.39.86.86:5000")  # Lancer MLflow en local : mlflow-server
+mlflow.set_tracking_uri("http://52.47.103.192:5000")  # Lancer MLflow en local : mlflow-server
 mlflow.set_experiment("Bike Sharing Prediction")
 
 # 📌 Définition du format des requêtes
