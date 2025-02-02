@@ -113,7 +113,7 @@ if st.button("📈 Prédire le nombre de vélos disponibles"):
     lat, lon = station_info["Latitude"], station_info["Longitude"]
 
     # 🔹 Préparer la requête pour FastAPI
-    api_url = "http://13.39.81.117:8000/predict/" # pour del=loyment local : bike-api
+    api_url = "http://bike-api:8000/predict/" # pour del=loyment local : bike-api
     data = {
         "station": station_filter,
         "hour": full_datetime.hour,

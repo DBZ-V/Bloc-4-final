@@ -19,7 +19,7 @@ services:
     depends_on:
       - mlflow-server
     environment:
-      - MLFLOW_TRACKING_URI=http://13.39.81.117:5000 #loca = mlflow-server
+      - MLFLOW_TRACKING_URI=http://mlflow-server:5000
     ports:
       - "8000:8000"
     networks:
@@ -37,6 +37,21 @@ services:
     networks:
       - mlflow-network
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    networks:
+      - mlflow-network  
+
 networks:
   mlflow-network:
     driver: bridge
+  
+volumes:
+  jenkins_home: 
