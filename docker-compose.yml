@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  mlflow-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-mlflow
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    networks:
+      - mlflow-network
+
+  bike-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bike-api
+    depends_on:
+      - mlflow-server
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow-server:5000
+    ports:
+      - "8000:8000"
+    networks:
+      - mlflow-network
+
+  streamlit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile-Streamlit
+    container_name: streamlit-app
+    depends_on:
+      - bike-api
+    ports:
+      - "8501:8501"
+    networks:
+      - mlflow-network
+
+networks:
+  mlflow-network:
+    driver: bridge

@@ -1,0 +1,13 @@
+fastapi
+mlflow
+requests
+uvicorn
+pandas
+prophet
+scikit-learn
+plotly  
+streamlit
+pandas
+folium
+requests
+streamlit_folium
