@@ -87,7 +87,7 @@ from streamlit_folium import folium_static
 import pickle
 
 # 🔹 Charger le fichier des stations
-df = pd.read_csv("data/London_Bike_Sharing_Dataset.csv")
+df = pd.read_csv("data/df_index_station.csv")
 
 # 🔹 Configuration de l'application Streamlit
 st.set_page_config(page_title="📊 Prédiction des vélos à Londres", layout="wide")
